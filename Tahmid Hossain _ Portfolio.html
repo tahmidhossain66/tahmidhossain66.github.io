@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tahmid Hossain | Aspiring Data Analyst</title>
+<style>
+:root{
+  --bg:#062428; --surface:#0b3237; --line:#17484e; --text:#e9f2f0; --muted:#9dbab7;
+  --gold:#d9b45a; --gold-d:#b8923a; --teal:#1f8a8a;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px)}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2;margin:0}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(100% - 2.5rem,960px);margin-inline:auto}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:rgba(6,36,40,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:Georgia,serif;font-weight:700;color:var(--gold);letter-spacing:.08em}
+nav ul{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0}
+nav a{color:var(--muted);font-size:.95rem;padding:.3rem 0;border-bottom:2px solid transparent;transition:.2s}
+nav a:hover,nav a.on{color:var(--gold);border-color:var(--gold)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:.4rem .7rem;font-size:1rem;cursor:pointer}
+@media(max-width:640px){
+  .menu{display:block}
+  nav{position:absolute;left:0;right:0;top:60px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:0;padding:.5rem 1.25rem 1rem}
+  nav a{display:block;padding:.7rem 0}
+}
+
+.hero{min-height:88vh;display:flex;align-items:center;padding:4rem 0;background:radial-gradient(circle at 80% 10%,rgba(31,138,138,.35),transparent 55%)}
+.eyebrow{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:.78rem;margin:0 0 1rem}
+.hero h1{font-size:clamp(2.4rem,9vw,4.6rem);margin-bottom:1rem}
+.hero p.lead{font-size:clamp(1.05rem,3.2vw,1.35rem);color:var(--muted);max-width:34ch;margin:0 0 2rem}
+.btn{display:inline-block;background:var(--gold);color:#1a1405;font-weight:600;padding:.85rem 1.6rem;border-radius:999px;border:0;cursor:pointer;font-size:1rem;transition:.2s}
+.btn:hover{background:var(--gold-d);transform:translateY(-2px)}
+.btn.ghost{background:none;color:var(--text);border:1px solid var(--gold);margin-left:.6rem}
+.btn.ghost:hover{background:rgba(217,180,90,.12)}
+
+section{padding:4.5rem 0}
+section.alt{background:var(--surface)}
+h2{font-size:clamp(1.7rem,5vw,2.3rem);margin-bottom:2rem}
+h2::after{content:"";display:block;width:56px;height:3px;background:var(--gold);margin-top:.7rem;border-radius:2px}
+.about p{max-width:62ch;font-size:1.08rem;color:#d3e3e0;margin:0}
+
+.cards{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.5rem;transition:.25s}
+section.alt .card{background:var(--bg)}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card h3{font-size:1.2rem;margin-bottom:.3rem}
+.card .sub{color:var(--gold);font-size:.92rem;margin:0 0 .6rem}
+.card p{margin:.15rem 0;color:var(--muted);font-size:.95rem}
+
+.group{margin-bottom:1.8rem}
+.group h3{font-family:system-ui,sans-serif;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem}
+.tags{display:flex;flex-wrap:wrap;gap:.6rem}
+.tag{background:rgba(31,138,138,.18);border:1px solid var(--teal);color:#d6f0ee;padding:.4rem .95rem;border-radius:999px;font-size:.92rem;transition:.2s}
+.tag:hover{border-color:var(--gold);color:var(--gold)}
+.tag.gold{background:rgba(217,180,90,.12);border-color:var(--gold-d);color:#f0dca3}
+
+.contact{text-align:center}
+.contact h2::after{margin-inline:auto}
+.contact p{color:var(--muted);margin:0 auto 1.6rem;max-width:40ch}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:1.5rem 0;border-top:1px solid var(--line)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a href="#top" class="brand">TH</a>
+    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false">Menu</button>
+    <nav id="nav">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Management Information Systems · University of Dhaka</p>
+      <h1>Tahmid Hossain</h1>
+      <p class="lead">Aspiring Data Analyst turning data into meaningful insights.</p>
+      <a class="btn" href="#about">About me</a><a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="about" class="alt about">
+    <div class="wrap reveal">
+      <h2>About me</h2>
+      <p>I’m a BBA student majoring in Management Information Systems at the University of Dhaka in Bangladesh. I’m a motivated, detail-oriented aspiring data analyst who enjoys turning data into meaningful insights for better decision-making. I’m currently developing my skills in Excel, SQL, Python, statistics and data visualization, and I’m eager to apply my analytical and problem-solving skills to real-world business challenges.</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap reveal">
+      <h2>Education</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>University of Dhaka</h3>
+          <p class="sub">Bachelor in Business Administration</p>
+          <p>Major in Management Information System</p>
+          <p>CGPA: 3.72</p>
+          <p>Dhaka, Bangladesh</p>
+        </article>
+        <article class="card">
+          <h3>Vasantek Government College</h3>
+          <p class="sub">Higher Secondary School</p>
+          <p>Business Studies Group</p>
+          <p>August 2024</p>
+          <p>Dhaka, Bangladesh</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="alt">
+    <div class="wrap reveal">
+      <h2>Skills</h2>
+      <div class="group"><h3>Technical</h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">C (Basic)</span><span class="tag">Excel (Basic)</span><span class="tag">Microsoft PowerPoint</span><span class="tag">Microsoft Word</span></div></div>
+      <div class="group"><h3>Soft skills</h3>
+        <div class="tags"><span class="tag">Communication</span><span class="tag">Data Storytelling</span><span class="tag">Problem-Solving</span><span class="tag">Strategic Thinking</span></div></div>
+      <div class="group"><h3>Currently developing</h3>
+        <div class="tags"><span class="tag gold">Excel</span><span class="tag gold">SQL</span><span class="tag gold">Python</span><span class="tag gold">Statistics</span><span class="tag gold">Data Visualization</span></div></div>
+      <div class="group"><h3>Languages</h3>
+        <div class="tags"><span class="tag">Bangla – Native</span><span class="tag">English – Communicable</span><span class="tag">Hindi – Communicable</span></div></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap reveal">
+      <h2>Contact</h2>
+      <p>Open to conversations about data analytics and learning opportunities.</p>
+      <a class="btn" href="mailto:tahmidhossain20112004@gmail.com">Email me</a>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="yr"></span> Tahmid Hossain</footer>
+
+<script>
+  var yr = document.getElementById('yr'); yr.textContent = new Date().getFullYear();
+
+  var menu = document.getElementById('menu'), nav = document.getElementById('nav');
+  menu.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menu.setAttribute('aria-expanded', open);
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.classList.remove('open'); menu.setAttribute('aria-expanded', false); }
+  });
+
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  } else { items.forEach(function (el) { el.classList.add('in'); }); }
+
+  var links = document.querySelectorAll('nav a'), secs = [];
+  links.forEach(function (l) { var s = document.querySelector(l.getAttribute('href')); if (s) secs.push([l, s]); });
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY + 120, cur = null;
+    secs.forEach(function (p) { if (p[1].offsetTop <= y) cur = p[0]; });
+    links.forEach(function (l) { l.classList.toggle('on', l === cur); });
+  }, { passive: true });
+</script>
+</body>
+</html>
